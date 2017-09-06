@@ -1,0 +1,38 @@
+{
+  "name": "shipu_project",
+  "version": "0.0.1",
+  "description": "Project to make SCRUM daily easier (maybe scaling to project management tool)",
+  "main": "app.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha",
+    "start": "node src/app.js"
+  },
+  "keywords": [
+    "SCRUM",
+    "daily",
+    "management"
+  ],
+  "author": "Cristian Camilo Morales",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "4.6.1"
+  },
+  "dependencies": {
+    "boom": "5.2.0",
+    "kcors": "2.2.1",
+    "koa": "2.3.0",
+    "koa-bodyparser": "4.2.0",
+    "koa-compose": "4.0.0",
+    "koa-compress": "2.0.0",
+    "koa-conditional-get": "2.0.0",
+    "koa-etag": "3.0.0",
+    "koa-helmet": "3.2.0",
+    "koa-jsonp": "2.0.2",
+    "koa-logger": "3.0.1",
+    "koa-passport": "3.0.0",
+    "koa-router": "7.2.1",
+    "koa-server-push": "0.1.0",
+    "koa-validate": "1.0.7",
+    "winston": "2.3.1"
+  }
+}
