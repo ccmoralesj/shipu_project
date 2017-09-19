@@ -35,10 +35,6 @@ module.exports = () => {
   koaValidate(app);
   app.use(routes);
   const port = 3000;
-  /*
-  const listenAsync = Promise.promisify(app.listen, { context: app });
-  await listenAsync(port);
-  */
   app.listen(port);
   return port;
 };
