@@ -1,24 +1,19 @@
 const Router = require('koa-router');
+const CreateMember = require('./controllers/Create');
+const ReadMember = require('./controllers/Read');
+const UpdateMember = require('./controllers/Update');
+const DeleteMember = require('./controllers/Delete');
 
 const router = new Router({ prefix: '/members' });
 
 module.exports = () => {
-  router.post('/', (ctx, next) => {
-    ctx.body = 'Hello Member';
-  });
+  router.post('/', ...CreateMember);
 
-  router.get('/:id?', (ctx, next) => {
-    ctx.body = 'Hello Member';
-  });
+  router.get('/:id?', ...ReadMember);
 
-  router.patch('/:id', (ctx, next) => {
-    ctx.body = 'Hello Member';
-  });
+  router.patch('/:id', ...UpdateMember);
 
-
-  router.del('/:id', (ctx, next) => {
-    ctx.body = 'Hello Member';
-  });
+  router.del('/:id', ...DeleteMember);
 
   return router;
 };
