@@ -1,5 +1,6 @@
 const logger = require('winston');
 const Scrumly = require('scrumly');
+const ErrorHandler = require('../../../helper/errorHandler');
 
 const controller = [
     async (ctx, next) => {
@@ -13,7 +14,6 @@ const controller = [
         try {
             return await next();
         } catch (err) {
-            logger.error(err);
             ErrorHandler(ctx,err,400);
         }
     },

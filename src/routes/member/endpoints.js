@@ -1,8 +1,8 @@
 const Router = require('koa-router');
-const CreateMember = require('./controllers/Create');
-const ReadMember = require('./controllers/Read');
-const UpdateMember = require('./controllers/Update');
-const DeleteMember = require('./controllers/Delete');
+const CreateMember = require('./controllers/createMember');
+const ReadMember = require('./controllers/readMember');
+const UpdateMember = require('./controllers/updateMember');
+const DeleteMember = require('./controllers/deleteMember');
 
 const router = new Router({ prefix: '/members' });
 

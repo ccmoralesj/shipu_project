@@ -2,7 +2,7 @@ const logger = require('winston');
 const Scrumly = require('scrumly');
 const ErrorHandler = require('../../../helper/errorHandler');
 
-const controller = [
+const controllers = [
     async (ctx, next) => {
         ctx.checkParams('id')
             .notEmpty()
@@ -10,20 +10,18 @@ const controller = [
         if (ctx.errors) ErrorHandler(ctx, ctx.errors, 400);
         else await next();
     },
-    async(ctx, next) => {
+    async (ctx, next) => {
         try {
             return await next();
         } catch (err) {
-            ErrorHandler(ctx,err,400);
+            ErrorHandler(ctx, err, 400);
         }
     },
     async (ctx) => {
-        const { id } = ctx.params;
-        const { toDos } = ctx.request.body;
-        const teamUpdated = await Scrumly.Interfaces.Team.removeToDo({ teamId: id, toDos });
-        logger.info(`ToDos removed ${toDos}`);
-        ctx.body = teamUpdated;
-    },
+        const {id} = ctx.params;
+        const memberDeleted = await Scrumly.Interfaces.Member.remove(id);
+        logger.info(`Member deleted ${memberDeleted}`);
+        ctx.body = memberDeleted;
+    }
 ];
-
-module.exports = controller;
+module.exports = controllers;

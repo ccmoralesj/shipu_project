@@ -28,11 +28,9 @@ module.exports = () => {
     .use(jsonp());
 
   // Error Handling
-  /*
   app.on('error', err => {
     wlogger.error(err);
   });
-  */
 
   koaValidate(app);
   app.use(routes);

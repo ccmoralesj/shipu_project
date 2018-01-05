@@ -1,10 +1,12 @@
 const logger = require('winston');
 const Scrumly = require('scrumly');
+const ErrorHandler = require('../../../helper/errorHandler');
 
 const controller = [
     async (ctx, next) => {
         ctx.checkParams('id')
             .optional()
+            .empty()
             .match(/^[0-9a-fA-F]{24}$/);
         if (ctx.errors) ErrorHandler(ctx, ctx.errors, 400);
         else await next();
@@ -13,7 +15,6 @@ const controller = [
         try {
             return await next();
         } catch (err) {
-            logger.error(err);
             ErrorHandler(ctx,err,400);
         }
     },

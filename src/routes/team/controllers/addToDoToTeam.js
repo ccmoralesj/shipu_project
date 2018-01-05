@@ -1,5 +1,6 @@
 const logger = require('winston');
 const Scrumly = require('scrumly');
+const ErrorHandler = require('../../../helper/errorHandler');
 
 const controller = [
     async (ctx, next) => {

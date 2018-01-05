@@ -15,7 +15,6 @@ const controller = [
         try {
             return await next();
         } catch (err) {
-            logger.error(err);
             ErrorHandler(ctx,err,400);
         }
     },

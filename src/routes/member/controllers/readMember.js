@@ -5,14 +5,9 @@ const ErrorHandler = require('../../../helper/errorHandler');
 const controller = [
     async (ctx, next) => {
         ctx.checkParams('id')
-            .notEmpty()
+            .optional()
+            .empty()
             .match(/^[0-9a-fA-F]{24}$/);
-        ctx.checkBody('name')
-            .optional()
-            .notEmpty();
-        ctx.checkBody('color')
-            .optional()
-            .notEmpty();
         if (ctx.errors) ErrorHandler(ctx, ctx.errors, 400);
         else await next();
     },
@@ -23,12 +18,17 @@ const controller = [
             ErrorHandler(ctx,err,400);
         }
     },
-    async (ctx) => {
+    async (ctx, next) => {
         const { id } = ctx.params;
-        const { name, color } = ctx.request.body;
-        const teamUpdated = await Scrumly.Interfaces.Team.update({ id, name, color});
-        logger.info(`Team updated ${teamUpdated}`);
-        ctx.body = teamUpdated;
+        if (!id) return await next();
+        const memberFound = await Scrumly.Interfaces.Member.readById(id);
+        logger.info(`Particular Member found ${memberFound}`);
+        ctx.body = memberFound;
+    },
+    async (ctx) => {
+        const membersFound = await Scrumly.Interfaces.Member.read();
+        logger.info(`Members found ${membersFound}`);
+        ctx.body = membersFound;
     },
 ];
 

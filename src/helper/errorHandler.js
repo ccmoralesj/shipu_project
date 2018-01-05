@@ -5,4 +5,5 @@ module.exports = (ctx, error, status) => {
     errorResponse.status = error.status || 500;
     errorResponse.message = error.message || error;
     ctx.body = errorResponse;
+    ctx.app.emit('error', error, ctx);
 };
