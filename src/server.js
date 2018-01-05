@@ -14,27 +14,27 @@ const serverpush = require('koa-server-push');
 const routes = require('./routes');
 
 module.exports = () => {
-  const app = new Koa();
-  app
-    .use(serverpush())
-    .use(helmet())
-    .use(logger())
-    .use(bodyParser())
-    .use(cors({ allowMethods: 'GET,POST,PUT,PATCH,DELETE' }))
-    .use(compress())
-    .use(passport.initialize())
-    .use(conditional())
-    .use(etag())
-    .use(jsonp());
+    const app = new Koa();
+    app
+        .use(serverpush())
+        .use(helmet())
+        .use(logger())
+        .use(bodyParser())
+        .use(cors({allowMethods: 'GET,POST,PUT,PATCH,DELETE'}))
+        .use(compress())
+        .use(passport.initialize())
+        .use(conditional())
+        .use(etag())
+        .use(jsonp());
 
-  // Error Handling
-  app.on('error', err => {
-    wlogger.error(err);
-  });
+    // Error Handling
+    app.on('error', err => {
+        wlogger.error(err);
+    });
 
-  koaValidate(app);
-  app.use(routes);
-  const port = 3000;
-  app.listen(port);
-  return port;
+    koaValidate(app);
+    app.use(routes);
+    const port = 3000;
+    app.listen(port);
+    return port;
 };

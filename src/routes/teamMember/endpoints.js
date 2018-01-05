@@ -1,19 +1,22 @@
 const Router = require('koa-router');
+const createTeamMember = require('./controllers/createTeamMember');
+const readTeamMember = require('./controllers/readTeamMember');
+const patchTeamMember = require('./controllers/patchTeamMember');
+const deleteTeamMember = require('./controllers/deleteTeamMember');
+const readTeamMemberByTeamId = require('./controllers/readTeamMemberByTeamId');
 
 const router = new Router({prefix: '/team-members'});
 
 module.exports = () => {
-    router.post('/', ...createTeam);
+    router.post('/', ...createTeamMember);
 
-    router.get('/:id?', ...readTeam);
+    router.get('/:id?', ...readTeamMember);
 
-    router.patch('/:id', ...patchTeam);
+    router.patch('/:id', ...patchTeamMember);
 
-    router.patch('/:id/add-to-do', ...addToDoTeam);
+    router.get('/:teamId/by-team', ...readTeamMemberByTeamId);
 
-    router.patch('/:id/remove-to-do', ...removeToDoTeam);
-
-    router.del('/:id', ...deleteTeam);
+    router.del('/:id', ...deleteTeamMember);
 
     return router;
 };
