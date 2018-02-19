@@ -6,20 +6,20 @@ const deleteTask = require('./controllers/deleteTask');
 const addNoteTask = require('./controllers/addNoteToTask');
 const removeNoteTask = require('./controllers/removeNoteToTask');
 
-const router = new Router({ prefix: '/task' });
+const router = new Router({ prefix: '/tasks' });
 
 module.exports = () => {
-    router.post('/', ...createTask);
+  router.post('/', ...createTask);
 
-    router.get('/:id?', ...readTask);
+  router.get('/:id?', ...readTask);
 
-    router.patch('/:id', ...patchTask);
+  router.patch('/:id', ...patchTask);
 
-    router.patch('/:id/add-note', ...addNoteTask);
+  router.patch('/:id/add-note', ...addNoteTask);
 
-    router.patch('/:id/remove-note', ...removeNoteTask);
+  router.patch('/:id/remove-note', ...removeNoteTask);
 
-    router.del('/:id', ...deleteTask);
+  router.del('/:id', ...deleteTask);
 
-    return router;
+  return router;
 };

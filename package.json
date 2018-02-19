@@ -29,7 +29,9 @@
     "chai-as-promised": "7.1.1",
     "cz-conventional-changelog": "^2.0.0",
     "dirty-chai": "2.0.1",
-    "eslint": "4.6.1",
+    "eslint": "4.18.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
     "mocha": "3.5.0",
     "sinon": "3.2.1",
     "sinon-as-promised": "4.0.3"
