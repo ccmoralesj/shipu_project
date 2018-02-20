@@ -39,7 +39,7 @@ const controller = [
     ctx.body = taskFound;
   },
   async (ctx) => {
-    const { since, until, doneTasks } = ctx.params;
+    const { since, until, doneTasks } = ctx.request.query;
     const queryBuild = dateQueryBuilder(since, until);
     const query = {};
     if (Object.keys(queryBuild).length !== 0) {
