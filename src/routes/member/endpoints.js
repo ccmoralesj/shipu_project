@@ -4,16 +4,16 @@ const ReadMember = require('./controllers/readMember');
 const UpdateMember = require('./controllers/updateMember');
 const DeleteMember = require('./controllers/deleteMember');
 
-const router = new Router({prefix: '/members'});
+const router = new Router({ prefix: '/members' });
 
 module.exports = () => {
-    router.post('/', ...CreateMember);
+  router.post('/', ...CreateMember);
 
-    router.get('/:id?', ...ReadMember);
+  router.get('/:id?', ...ReadMember);
 
-    router.patch('/:id', ...UpdateMember);
+  router.patch('/:id', ...UpdateMember);
 
-    router.del('/:id', ...DeleteMember);
+  router.del('/:id', ...DeleteMember);
 
-    return router;
+  return router;
 };
