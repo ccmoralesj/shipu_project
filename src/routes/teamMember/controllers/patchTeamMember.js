@@ -4,6 +4,9 @@ const ErrorHandler = require('../../../helper/errorHandler');
 
 const controller = [
     async (ctx, next) => {
+      ctx.checkParams('id')
+        .notEmpty()
+        .match(/^[0-9a-fA-F]{24}$/);
         ctx.checkBody('role')
             .optional()
             .notEmpty()

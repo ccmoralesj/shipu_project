@@ -2,8 +2,9 @@ const Router = require('koa-router');
 const Boom = require('boom');
 const compose = require('koa-compose');
 const Auth = require('./auth');
-const DailyScrum = require('./task');
+const Task = require('./task');
 const Member = require('./member');
+const Project = require('./project');
 const Team = require('./team');
 const TeamMember = require('./teamMember');
 
@@ -21,8 +22,9 @@ app.get('/', async(ctx) => {
 
 
 app.use(Auth().routes());
-app.use(DailyScrum().routes());
+app.use(Task().routes());
 app.use(Member().routes());
+app.use(Project().routes());
 app.use(Team().routes());
 app.use(TeamMember().routes());
 

@@ -1,3 +1,3 @@
-const DailyScrum = require('./endpoints');
+const Task = require('./endpoints');
 
-module.exports = DailyScrum;
+module.exports = Task;
