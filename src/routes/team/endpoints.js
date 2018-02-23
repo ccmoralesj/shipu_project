@@ -6,7 +6,7 @@ const deleteTeam = require('./controllers/deleteTeam');
 const addToDoTeam = require('./controllers/addToDoToTeam');
 const removeToDoTeam = require('./controllers/removeToDoToTeam');
 
-const router = new Router({ prefix: '/teams' });
+const router = new Router({ prefix: '/projects/:projectId/teams' });
 
 module.exports = () => {
   router.post('/', ...createTeam);

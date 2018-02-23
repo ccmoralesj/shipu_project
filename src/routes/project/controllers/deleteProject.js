@@ -25,6 +25,7 @@ const controller = [
   },
   async (ctx) => {
     const { id } = ctx.params;
+    // TODO the creatorId should be reviewed by the bearer of the request
     const { creatorId } = ctx.request.body;
     const isCreator = await Scrumly.Interfaces.Project.isCreator({
       projectId: id,
