@@ -5,18 +5,18 @@ const patchTeamMember = require('./controllers/patchTeamMember');
 const deleteTeamMember = require('./controllers/deleteTeamMember');
 const readTeamMemberByTeamId = require('./controllers/readTeamMemberByTeamId');
 
-const router = new Router({prefix: '/team-members'});
+const router = new Router({ prefix: '/team-members' });
 
 module.exports = () => {
-    router.post('/', ...createTeamMember);
+  router.post('/', ...createTeamMember);
 
-    router.get('/:id?', ...readTeamMember);
+  router.get('/:id?', ...readTeamMember);
 
-    router.patch('/:id', ...patchTeamMember);
+  router.patch('/:id', ...patchTeamMember);
 
-    router.get('/:teamId/by-team', ...readTeamMemberByTeamId);
+  router.get('/:teamId/by-team', ...readTeamMemberByTeamId);
 
-    router.del('/:id', ...deleteTeamMember);
+  router.del('/:id', ...deleteTeamMember);
 
-    return router;
+  return router;
 };
